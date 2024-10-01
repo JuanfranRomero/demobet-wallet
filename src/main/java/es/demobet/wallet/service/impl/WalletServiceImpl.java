@@ -14,9 +14,13 @@ import es.demobet.wallet.service.WalletService;
 @Service
 public class WalletServiceImpl implements WalletService {
 
-	@Autowired
-	private WalletRepository walletRepository;
+	private final WalletRepository walletRepository;
 	
+	@Autowired
+	public WalletServiceImpl(WalletRepository walletRepository) {
+		this.walletRepository = walletRepository;
+	}
+
 	@Override
 	public Wallet create(Integer userIdext) {
 		Wallet wallet = new Wallet();

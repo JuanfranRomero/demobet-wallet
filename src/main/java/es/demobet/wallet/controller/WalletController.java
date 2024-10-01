@@ -18,9 +18,13 @@ import es.demobet.wallet.service.WalletService;
 @RequestMapping("/wallet")
 public class WalletController {
 
-	@Autowired
-	private WalletService walletService;
+	private final WalletService walletService;
 	
+	@Autowired
+	public WalletController(WalletService walletService) {
+		this.walletService = walletService;
+	}
+
 	@GetMapping("/{userIdext}")
     public ResponseEntity<WalletResponse> get(@PathVariable Integer userIdext) {
 		WalletResponse walletResponse = walletService.get(userIdext);
