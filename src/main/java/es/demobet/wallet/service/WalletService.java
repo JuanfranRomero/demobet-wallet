@@ -14,4 +14,8 @@ public interface WalletService {
 	
 	public WalletResponse withdraw(WalletRequest walletRequest);
 	
+	public WalletResponse subtract(WalletRequest walletRequest);
+	
+	public WalletResponse increaseProfit(WalletRequest walletRequest);
+	
 }

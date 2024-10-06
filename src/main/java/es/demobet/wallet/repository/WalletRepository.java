@@ -19,7 +19,17 @@ public interface WalletRepository extends JpaRepository<Wallet, Integer> {
 	
 	@Modifying
 	@Transactional
+	@Query("update Wallet w set w.amount = w.amount + :amount where w.userIdext = :userIdext")
+	public void increaseProfit(@Param("userIdext") Integer userIdext, @Param("amount") Integer amount);
+	
+	@Modifying
+	@Transactional
 	@Query("update Wallet w set w.amount = w.amount - :amount where w.userIdext = :userIdext")
 	public void withdraw(@Param("userIdext") Integer userIdext, @Param("amount") Integer amount);
+	
+	@Modifying
+	@Transactional
+	@Query("update Wallet w set w.amount = w.amount - :amount where w.userIdext = :userIdext")
+	public void subtract(@Param("userIdext") Integer userIdext, @Param("amount") Integer amount);
 	
 }

@@ -48,6 +48,21 @@ public class WalletServiceImpl implements WalletService {
 		return getAmount(walletRequest.getUserId());
 	}
 	
+	@Override
+	public WalletResponse subtract(WalletRequest walletRequest) {
+		walletRepository.subtract(walletRequest.getUserId(), walletRequest.getAmount());
+		
+		return getAmount(walletRequest.getUserId());
+	}
+	
+
+	@Override
+	public WalletResponse increaseProfit(WalletRequest walletRequest) {
+		walletRepository.increaseProfit(walletRequest.getUserId(), walletRequest.getAmount());
+		
+		return getAmount(walletRequest.getUserId());
+	}
+	
 	private WalletResponse getAmount(Integer userId) {
 		WalletResponse walletResponse = new WalletResponse();
 		Optional<Wallet> optionalWallet = walletRepository.findById(userId);

@@ -43,6 +43,18 @@ public class WalletController {
         return ResponseEntity.ok(walletResponse);
     }
 	
+	@PutMapping("/subtract")
+    public ResponseEntity<WalletResponse> subtract(@RequestBody WalletRequest walletRequest) {
+		WalletResponse walletResponse = walletService.subtract(walletRequest);
+        return ResponseEntity.ok(walletResponse);
+    }
+	
+	@PutMapping("/increase_profit")
+    public ResponseEntity<WalletResponse> increaseProfit(@RequestBody WalletRequest walletRequest) {
+		WalletResponse walletResponse = walletService.increaseProfit(walletRequest);
+        return ResponseEntity.ok(walletResponse);
+    }
+	
 	@PostMapping("/{userIdext}")
     public ResponseEntity<Void> initWallet(@PathVariable Integer userIdext) {
 		walletService.create(userIdext);
